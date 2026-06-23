@@ -521,10 +521,43 @@
     flex-direction: column;
     align-items: center;
     gap: 1rem;
+    overflow: visible;
   }
-  .orbit-layout__center { position: relative; transform: none; margin-bottom: 1.5rem; }
-  .orbit-layout__ring { position: relative; display: flex; flex-wrap: wrap; gap: 0.75rem; justify-content: center; }
-  .orbit-item { position: relative; top: auto; left: auto; transform: none; width: auto; }
+  .orbit-layout__center {
+    position: relative;
+    transform: none;
+    margin-bottom: 1.5rem;
+    pointer-events: auto;
+  }
+  .orbit-layout__line {
+    display: none;
+  }
+  .orbit-layout__bg-text {
+    font-size: 3.5rem;
+  }
+  .orbit-layout__ring {
+    position: relative;
+    inset: auto;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    justify-content: center;
+  }
+  .orbit-item {
+    position: relative;
+    top: auto;
+    left: auto;
+    transform: none;
+    width: auto;
+  }
+  .orbit-item__tooltip {
+    bottom: auto;
+    top: 100%;
+    transform: translateX(-50%) translateY(6px);
+  }
+  .orbit-item:hover .orbit-item__tooltip {
+    transform: translateX(-50%) translateY(10px);
+  }
 }
 
 .orbit-item__pill {
