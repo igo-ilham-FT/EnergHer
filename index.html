@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="EnergHer — An energy drink for your healthy aging lifestyle. Formulated for women 40+.">
+  <meta property="og:title" content="EnergHer — Energy for Healthy Aging">
+  <meta property="og:description" content="An energy drink formulated for women 40+. Functional ingredients that support energy, balance, and clarity.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="assets/logo.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <title>EnergHer — Energy for Healthy Aging</title>
+  <link rel="icon" type="image/png" href="assets/logo.png">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,600;0,700;0,800;0,900;1,600;1,700;1,800;1,900&family=Barlow:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap" rel="stylesheet">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/global.css">
+  <link rel="stylesheet" href="css/loading.css">
+  <link rel="stylesheet" href="css/hero.css">
+  <link rel="stylesheet" href="css/products.css">
+  <link rel="stylesheet" href="css/story.css">
+  <link rel="stylesheet" href="css/testimonials.css">
+  <link rel="stylesheet" href="css/newsletter.css">
+  <link rel="stylesheet" href="css/news.css">
+</head>
+<body>
+
+  <!-- ══ LOADING SCREEN ══ -->
+  <div id="loading-screen" role="status" aria-label="Loading EnergHer">
+    <p class="loading__logo">
+      <span class="loading__logo-light">Energ</span><span class="loading__logo-bold">Her</span>
+      <span class="loading__bolt" aria-hidden="true">
+        <img src="assets/logo2.png" alt="" class="loading__bolt-bg">
+        <img src="assets/logo2.png" alt="" class="loading__bolt-fill" id="loading-bar">
+      </span>
+    </p>
+  </div>
+
+  <!-- ══ NAV ══ -->
+  <nav class="nav" id="main-nav" aria-label="Main navigation">
+    <a href="index.html" class="nav__brand" aria-label="EnergHer home">
+      <!-- Replace src with actual logo file path -->
+      <img src="assets/logo.png" alt="EnergHer" onload="this.nextElementSibling.style.display='none';" onerror="this.style.display='none';this.nextElementSibling.style.display='inline';">
+      <span class="nav__brand-fallback">EnergHer</span>
+    </a>
+    <ul class="nav__links" aria-label="Main navigation links">
+      <li><a href="#story">Our Story</a></li>
+      <li><a href="#products">Products</a></li>
+      <li><a href="#news">News</a></li>
+      <li><a href="#join">Join</a></li>
+    </ul>
+    <button class="nav__hamburger" id="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="nav-panel">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- ══ NAV PANEL OVERLAY ══ -->
+  <div class="nav-panel" id="nav-panel" aria-hidden="true" role="dialog" aria-label="Navigation menu">
+    <ul class="nav-panel__list" role="list">
+      <li><a href="#hero"         class="nav-panel__link">Home</a></li>
+      <li><a href="#story"        class="nav-panel__link">Our Story</a></li>
+      <li><a href="#products"     class="nav-panel__link">Explore Products</a></li>
+      <li><a href="#news"         class="nav-panel__link">News</a></li>
+      <li><a href="#join"         class="nav-panel__link">Membership</a></li>
+    </ul>
+
+    <div class="nav-panel__newsletter">
+      <h3>Newsletter</h3>
+      <p>Crafted content. Once a month, never more.</p>
+      <form class="nav-panel__newsletter-form" id="nav-nl-form" novalidate>
+        <input type="email" placeholder="Email address" aria-label="Email address" required>
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- ══ MAIN CONTENT ══ -->
+  <main>
+
+    <!-- ════════════════════════════════
+         SECTION 1: HERO
+    ════════════════════════════════ -->
+    <section id="hero" class="hero" aria-label="Hero">
+
+      <!-- Background wordmark -->
+      <h1 class="hero__wordmark" aria-hidden="true">EnergHer</h1>
+
+      <!-- Can placeholder — replace with real image by adding assets/can-her-front.png -->
+      <div class="hero__can-wrapper" role="img" aria-label="EnergHer can">
+        <div class="can can--hero can--her">
+          <img src="assets/can-her-front.png" alt="EnergHer Can" class="can__img"
+               onerror="this.hidden=true">
+          <div class="can__body">
+            <div class="can__label">
+              <span class="can__label-text">EnergHer</span>
+              <span class="can__label-sub">Energy Drink</span>
+            </div>
+            <div class="can__shine"></div>
+          </div>
+          <div class="can__top"></div>
+          <div class="can__bottom"></div>
+        </div>
+      </div>
+
+      <!-- Slogan (actual visible heading) -->
+      <p class="hero__slogan">an energy drink for your healthy aging lifestyle</p>
+
+      <!-- Scroll cue -->
+      <div class="hero__scroll-cue" aria-hidden="true">
+        <span>Scroll</span>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+      </div>
+
+    </section>
+
+    <!-- ════════════════════════════════
+         SECTION 2: PRODUCTS
+    ════════════════════════════════ -->
+    <section id="products" class="products" aria-label="Our Products">
+
+      <div class="products__header">
+        <h2 class="section-title products__title">
+          <em>Meet the</em>
+          Our Products
+        </h2>
+      </div>
+
+      <div class="products-grid">
+
+        <!-- Card 1: EnergHer -->
+        <article class="product-card js-reveal" aria-label="EnergHer product card">
+          <div class="product-card__left">
+            <p class="product-card__tag">For Her Vitality</p>
+            <h3 class="product-card__name">EnergHer</h3>
+            <p class="product-card__desc">Formulated for women 40+ navigating the changes of midlife. Functional ingredients that support energy, balance, and clarity.</p>
+            <a href="product-energher.html" class="btn btn-accent product-card__cta">View Product</a>
+          </div>
+          <div class="product-card__right">
+            <div class="can can--lg can--her can--interactive">
+              <img src="assets/can-her-front.png" alt="EnergHer Can" class="can__img" loading="lazy"
+                   onerror="this.hidden=true">
+              <div class="can__body">
+                <div class="can__label">
+                  <span class="can__label-text">EnergHer</span>
+                  <span class="can__label-sub">Energy Drink</span>
+                </div>
+                <div class="can__shine"></div>
+              </div>
+              <div class="can__top"></div>
+              <div class="can__bottom"></div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Card 2: EnergHim -->
+        <article class="product-card js-reveal js-reveal--delay-1" aria-label="EnergHim product card">
+          <div class="product-card__left">
+            <p class="product-card__tag">For His Endurance</p>
+            <h3 class="product-card__name">EnergHim</h3>
+            <p class="product-card__desc">Designed to support stamina, focus, and vitality for men who want to keep moving with purpose and strength.</p>
+            <a href="product-energhim.html" class="btn btn-accent product-card__cta">View Product</a>
+          </div>
+          <div class="product-card__right">
+            <div class="can can--lg can--him can--interactive">
+              <img src="assets/energhim.png" alt="EnergHim Can" class="can__img" loading="lazy"
+                   onerror="this.hidden=true">
+              <div class="can__body">
+                <div class="can__label">
+                  <span class="can__label-text">EnergHim</span>
+                  <span class="can__label-sub">Energy Drink</span>
+                </div>
+                <div class="can__shine"></div>
+              </div>
+              <div class="can__top"></div>
+              <div class="can__bottom"></div>
+            </div>
+          </div>
+        </article>
+
+      </div>
+
+    </section>
+
+    <!-- ════════════════════════════════
+         SECTION 3: OUR STORY
+    ════════════════════════════════ -->
+    <section id="story" class="story" aria-label="Our Story">
+
+      <div class="story__header">
+        <h2 class="section-title js-reveal">Our Story</h2>
+        <p class="section-subtitle js-reveal js-reveal--delay-1">From strangers grouped together to a drink made for change.</p>
+        <div class="divider js-reveal js-reveal--delay-2"></div>
+      </div>
+
+      <div class="story__pin-wrap">
+        <div class="timeline" role="list">
+          <div class="timeline__wave" aria-hidden="true"></div>
+
+          <div class="timeline__item js-reveal" role="listitem">
+            <div class="timeline__content">
+              <img class="timeline__img" src="assets/our_story_1.jpg" alt="Team Formation — August 2024" loading="lazy">
+              <time class="timeline__date" datetime="2024-08">August 2024</time>
+              <h3 class="timeline__title">Team Formation</h3>
+              <p class="timeline__text">It all started when Tom grouped us together after a week of team-building! Our running theory: it was based on a quiz about which animal we were. Chelsea the fox, David the shark, Gwen the turtle — somehow a perfectly balanced mix! Or maybe… because all of us speak Chinese! To this day, how we ended up together is still a mystery. Right after, we got our innovation prompt from our champion company, and the adventure began!</p>
+            </div>
+          </div>
+
+          <!-- Deco: leaf sprig -->
+          <div class="timeline__deco timeline__deco--grow-lb" aria-hidden="true">
+            <svg viewBox="0 0 64 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M32 78V40" stroke="var(--color-secondary)" stroke-width="1.5" stroke-linecap="round"/>
+              <path d="M32 58c-12-4-18-16-16-28 8 6 18 12 16 28z" stroke="var(--color-secondary)" stroke-width="1.2" fill="none"/>
+              <path d="M32 46c10-6 14-18 10-28-6 8-14 16-10 28z" stroke="var(--color-secondary)" stroke-width="1.2" fill="none"/>
+              <path d="M32 34c-8-2-12-10-10-18 6 4 12 8 10 18z" stroke="var(--color-secondary)" stroke-width="1.2" fill="none"/>
+            </svg>
+          </div>
+
+          <div class="timeline__item js-reveal" role="listitem">
+            <div class="timeline__content">
+              <img class="timeline__img" src="assets/our_story_2.jpg" alt="The Pitch — December 2024" loading="lazy">
+              <time class="timeline__date" datetime="2024-12">December 2024</time>
+              <h3 class="timeline__title">The Pitch</h3>
+              <p class="timeline__text">Everyone pitched their own idea, and after a LOT of deliberation, EnergHer won! From that moment on, we officially became Team EnergHer! Our home base became the Plus Ultra room, quiet, cozy, and with a camera that automatically switches to whoever's talking. Very fancy, very us.</p>
+            </div>
+          </div>
+
+          <!-- Deco: lightbulb spark -->
+          <div class="timeline__deco timeline__deco--grow-cc" aria-hidden="true">
+            <svg viewBox="0 0 56 72" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M28 8c-10 0-16 8-16 16 0 6 4 10 6 14h20c2-4 6-8 6-14 0-8-6-16-16-16z" stroke="var(--color-accent)" stroke-width="1.2"/>
+              <path d="M22 42h12M23 48h10M25 54h6" stroke="var(--color-accent)" stroke-width="1.2" stroke-linecap="round"/>
+              <path d="M28 2v-0M14 6l-2-2M42 6l2-2M8 20H4M52 20h-4" stroke="var(--color-accent)" stroke-width="1.2" stroke-linecap="round"/>
+              <circle cx="28" cy="2" r="1" fill="var(--color-accent)"/>
+            </svg>
+          </div>
+
+          <div class="timeline__item js-reveal" role="listitem">
+            <div class="timeline__content">
+              <img class="timeline__img" src="assets/our_story_3.jpg" alt="Initial R&D — January to June 2025" loading="lazy">
+              <time class="timeline__date" datetime="2025-01">January – June 2025</time>
+              <h3 class="timeline__title">Initial R&amp;D</h3>
+              <p class="timeline__text">Time to get to work! We buried ourselves in research on the market, competitors, and functional ingredients. We traveled a lot for this, and the biggest moment? Tasting our very first prototype in Lund! Unforgettable.</p>
+            </div>
+          </div>
+
+          <!-- Deco: lab flask / botanical -->
+          <div class="timeline__deco timeline__deco--grow-lt" aria-hidden="true">
+            <svg viewBox="0 0 60 76" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M22 8v20l-14 28c-2 4 1 8 5 8h34c4 0 7-4 5-8L38 28V8" stroke="var(--color-secondary)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M20 8h20" stroke="var(--color-secondary)" stroke-width="1.2" stroke-linecap="round"/>
+              <path d="M16 48c4-3 8-1 12 1s8 4 12 1" stroke="var(--color-secondary)" stroke-width="1" stroke-linecap="round"/>
+              <circle cx="24" cy="42" r="2" stroke="var(--color-secondary)" stroke-width="0.8"/>
+              <circle cx="34" cy="38" r="1.5" stroke="var(--color-secondary)" stroke-width="0.8"/>
+              <circle cx="28" cy="52" r="1.5" stroke="var(--color-secondary)" stroke-width="0.8"/>
+            </svg>
+          </div>
+
+          <div class="timeline__item js-reveal" role="listitem">
+            <div class="timeline__content">
+              <img class="timeline__img" src="assets/our_story_4.jpg" alt="Summer Break — July to September 2025" loading="lazy">
+              <time class="timeline__date" datetime="2025-07">July – September 2025</time>
+              <h3 class="timeline__title">Summer Break</h3>
+              <p class="timeline__text">A well-deserved break! We soaked up time with friends and family before the next big plot twist: thesis and internship placements sent us in different directions. Chelsea and Shenying off to Switzerland, Ana, Gwen, and David to the Netherlands!</p>
+            </div>
+          </div>
+
+          <!-- Deco: gentle breeze / wave -->
+          <div class="timeline__deco timeline__deco--grow-cc" aria-hidden="true">
+            <svg viewBox="0 0 72 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M4 28c8-12 16-12 24 0s16 12 24 0 16-12 24 0" stroke="var(--color-primary)" stroke-width="1" stroke-linecap="round" opacity="0.5"/>
+              <path d="M4 36c8-10 16-10 24 0s16 10 24 0 16-10 24 0" stroke="var(--color-secondary)" stroke-width="1.2" stroke-linecap="round" opacity="0.7"/>
+              <path d="M4 44c8-8 16-8 24 0s16 8 24 0 16-8 24 0" stroke="var(--color-accent)" stroke-width="1" stroke-linecap="round" opacity="0.5"/>
+              <circle cx="36" cy="12" r="6" stroke="var(--color-secondary)" stroke-width="1" opacity="0.4"/>
+              <circle cx="36" cy="12" r="2" fill="var(--color-secondary)" opacity="0.3"/>
+            </svg>
+          </div>
+
+          <div class="timeline__item js-reveal" role="listitem">
+            <div class="timeline__content">
+              <img class="timeline__img" src="assets/our_story_5.jpg" alt="Working Apart, Building Together" loading="lazy">
+              <time class="timeline__date" datetime="2025-11">November 2025 – June 2026</time>
+              <h3 class="timeline__title">Working Apart, Building Together</h3>
+              <p class="timeline__text">Different countries, same mission! Ana, Gwen, and David kept the formulation magic going in R&amp;D, Shenying powered up marketing, and Chelsea kept finance and the whole team on track, milestone by milestone. Distance couldn't slow us down!</p>
+            </div>
+          </div>
+
+          <!-- Deco: botanical branch -->
+          <div class="timeline__deco timeline__deco--grow-lb" aria-hidden="true">
+            <svg viewBox="0 0 56 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M28 76c0-20 0-40 0-60" stroke="var(--color-primary)" stroke-width="1.2" stroke-linecap="round"/>
+              <path d="M28 60c-6-1-14-6-14-14 6 2 12 6 14 14z" stroke="var(--color-primary)" stroke-width="1" fill="none"/>
+              <path d="M28 46c6-1 14-6 14-14-6 2-12 6-14 14z" stroke="var(--color-secondary)" stroke-width="1" fill="none"/>
+              <path d="M28 32c-6-1-12-6-12-12 6 2 10 4 12 12z" stroke="var(--color-primary)" stroke-width="1" fill="none"/>
+              <path d="M28 22c4-2 8-6 8-12-4 2-8 6-8 12z" stroke="var(--color-secondary)" stroke-width="1" fill="none"/>
+              <circle cx="28" cy="14" r="3" stroke="var(--color-accent)" stroke-width="1" fill="none"/>
+              <circle cx="28" cy="14" r="1" fill="var(--color-accent)"/>
+            </svg>
+          </div>
+
+          <div class="timeline__item timeline__item--launch js-reveal" role="listitem">
+            <div class="timeline__content">
+              <div class="timeline__cans">
+                <img class="timeline__can timeline__can--left" src="assets/can-her-front.png" alt="EnergHer can" loading="lazy">
+                <img class="timeline__can timeline__can--center" src="assets/ENERGHER2.png" alt="EnergHer can" loading="lazy">
+                <img class="timeline__can timeline__can--right" src="assets/energhim.png" alt="EnergHim can" loading="lazy">
+              </div>
+              <time class="timeline__date" datetime="2026-07">July 2026</time>
+              <h3 class="timeline__title">The Reveal</h3>
+              <p class="timeline__text">And here we are, the drink is finally ready!! Come taste it and tell us what you think!</p>
+            </div>
+          </div>
+
+          <!-- Spacer so last card can scroll fully into view -->
+          <div class="timeline__spacer" aria-hidden="true"></div>
+
+        </div>
+
+        <div class="story__scroll-hint" aria-hidden="true">
+          <span>Scroll to explore</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ════════════════════════════════
+         SECTION 4: TESTIMONIALS
+    ════════════════════════════════ -->
+    <section id="testimonials" class="testimonials" aria-label="Customer reviews">
+
+      <div class="testimonials__header">
+        <h2 class="section-title js-reveal">What People Are Saying</h2>
+        <p class="section-subtitle js-reveal js-reveal--delay-1">Real voices from our community.</p>
+        <div class="divider js-reveal js-reveal--delay-2"></div>
+      </div>
+
+      <div class="testimonials__grid">
+
+        <article class="testimonial-card js-reveal" aria-label="Customer review from Gwen">
+
+          <blockquote class="testimonial-card__quote">
+            "After a month of drinking EnergHer I noticed a difference in my day to day life where I have more energy and feel less drained!"
+          </blockquote>
+          <cite class="testimonial-card__author">— Gwen</cite>
+
+        </article>
+
+        <article class="testimonial-card js-reveal js-reveal--delay-1" aria-label="Customer review from Gwennifer">
+
+          <blockquote class="testimonial-card__quote">
+            "I love that EnergHer isn't just another pill I have to take to treat my symptoms, but it's also enjoyable to drink!"
+          </blockquote>
+          <cite class="testimonial-card__author">— Gwennifer</cite>
+
+        </article>
+
+        <article class="testimonial-card js-reveal js-reveal--delay-2" aria-label="Customer review from Gwendolyn">
+
+          <blockquote class="testimonial-card__quote">
+            "Finally a menopause product that doesn't feel like taking more medicine everyday."
+          </blockquote>
+          <cite class="testimonial-card__author">— Gwendolyn</cite>
+
+        </article>
+
+      </div>
+
+    </section>
+
+    <!-- ════════════════════════════════
+         SECTION 5: NEWSLETTER + MEMBERSHIP
+    ════════════════════════════════ -->
+    <section id="join" class="join" aria-label="Newsletter and Membership">
+
+      <div class="join__grid">
+
+        <!-- Newsletter -->
+        <div class="join__newsletter js-reveal">
+          <h2 class="section-title">Stay in the Loop</h2>
+          <p>Monthly research, recipes, and community stories. Once a month, never more.</p>
+          <form class="newsletter-form" id="newsletter-form" novalidate>
+            <div class="newsletter-form__row">
+              <label for="nl-email" class="visually-hidden">Email address</label>
+              <input type="email" id="nl-email" name="email" placeholder="your@email.com" required aria-required="true">
+              <button type="submit" class="btn">Subscribe</button>
+            </div>
+            <p class="form-success" id="nl-success" hidden>Thanks! You're on the list.</p>
+          </form>
+        </div>
+
+        <!-- Membership -->
+        <div class="join__membership js-reveal js-reveal--delay-1">
+          <h2 class="section-title">Become a Member</h2>
+          <p>Unlock exclusive benefits and join a community that gets it.</p>
+          <ul class="membership__benefits" aria-label="Membership benefits">
+            <li>Newest newsletters delivered first</li>
+            <li>Access to exclusive community events</li>
+            <li>Members-only bundle pricing (14 &amp; 30-pack)</li>
+            <li>Early access to new products</li>
+          </ul>
+          <form class="membership-form" id="membership-form" novalidate>
+            <input type="text"  name="name"  placeholder="Full name"     required aria-required="true" aria-label="Full name">
+            <input type="email" name="email" placeholder="Email address" required aria-required="true" aria-label="Email address">
+            <button type="submit" class="btn">Join Now</button>
+          </form>
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- ════════════════════════════════
+         SECTION 6: MEDIA & NEWS
+    ════════════════════════════════ -->
+    <section id="news" class="news-section" aria-label="Media and News">
+
+      <div class="news-section__header">
+        <h2 class="section-title js-reveal">Media &amp; News</h2>
+        <p class="section-subtitle js-reveal js-reveal--delay-1">Stay up to date with what we're up to.</p>
+        <div class="divider js-reveal js-reveal--delay-2"></div>
+      </div>
+
+      <div class="news-section__grid">
+
+        <article class="news-card js-reveal" aria-label="Women's Health Workshop 2026 article">
+          <div class="news-card__img-placeholder" role="img" aria-label="Event photo placeholder"></div>
+          <div class="news-card__body">
+            <p class="news-card__category">Event</p>
+            <time class="news-card__date" datetime="2026-09-15">September 2026</time>
+            <h3 class="news-card__title">Women's Health Workshop 2026</h3>
+            <p class="news-card__excerpt">Join us for a full day of talks, tastings, and wellness sessions designed for women navigating midlife health with confidence.</p>
+            <a href="news-workshop.html" class="btn btn-ghost">Read More</a>
+          </div>
+        </article>
+
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- ══ BACK TO TOP ══ -->
+  <button class="back-to-top" id="back-to-top" aria-label="Back to top" hidden>
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
+  </button>
+
+  <!-- ══ FOOTER ══ -->
+  <footer class="footer" role="contentinfo">
+    <div class="footer__inner">
+      <div class="footer__brand-col">
+        <p class="footer__brand">EnergHer</p>
+        <p class="footer__tagline">Energy for your healthy aging lifestyle.</p>
+        <div class="footer__social" aria-label="Social media links">
+          <a href="#" class="footer__social-link" aria-label="Instagram">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+          </a>
+          <a href="#" class="footer__social-link" aria-label="TikTok">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"/></svg>
+          </a>
+          <a href="#" class="footer__social-link" aria-label="LinkedIn">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+          </a>
+          <a href="#" class="footer__social-link" aria-label="Email">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          </a>
+        </div>
+      </div>
+      <nav class="footer__nav" aria-label="Footer navigation">
+        <div class="footer__nav-group">
+          <h4 class="footer__nav-heading">Explore</h4>
+          <ul>
+            <li><a href="#products">Products</a></li>
+            <li><a href="#story">Our Story</a></li>
+            <li><a href="#news">News</a></li>
+            <li><a href="#join">Membership</a></li>
+          </ul>
+        </div>
+        <div class="footer__nav-group">
+          <h4 class="footer__nav-heading">Products</h4>
+          <ul>
+            <li><a href="product-energher.html">EnergHer</a></li>
+            <li><a href="product-energhim.html">EnergHim</a></li>
+          </ul>
+        </div>
+        <div class="footer__nav-group">
+          <h4 class="footer__nav-heading">Legal</h4>
+          <ul>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Terms of Service</a></li>
+            <li><a href="#">Cookie Policy</a></li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+    <div class="footer__bottom">
+      <p class="footer__copy">&copy; 2026 EnergHer. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- ══ SCRIPTS ══ -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="js/loading.js"></script>
+  <script src="js/nav.js"></script>
+
+  <script src="js/scroll-animations.js"></script>
+  <script src="js/story-timeline.js"></script>
+
+  <script>
+    // ── Newsletter with validation ──
+    document.getElementById('newsletter-form')?.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const input = this.querySelector('input[type="email"]');
+      const success = document.getElementById('nl-success');
+      const emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+      // Remove previous errors
+      this.querySelector('.form-error')?.remove();
+      input?.classList.remove('form-input--error');
+
+      if (!input?.value || !emailRe.test(input.value)) {
+        input?.classList.add('form-input--error');
+        const err = document.createElement('p');
+        err.className = 'form-error';
+        err.textContent = 'Please enter a valid email address.';
+        err.setAttribute('role', 'alert');
+        input?.after(err);
+        input?.focus();
+        return;
+      }
+
+      if (success) {
+        success.removeAttribute('hidden');
+        input.value = '';
+        // Auto-hide success after 5s
+        setTimeout(() => success.setAttribute('hidden', ''), 5000);
+      }
+    });
+
+    // ── Membership form with validation ──
+    document.getElementById('membership-form')?.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const nameInput = this.querySelector('input[name="name"]');
+      const emailInput = this.querySelector('input[name="email"]');
+      const emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      let valid = true;
+
+      // Clear previous
+      this.querySelectorAll('.form-error').forEach(el => el.remove());
+      this.querySelectorAll('.form-input--error').forEach(el => el.classList.remove('form-input--error'));
+
+      if (!nameInput?.value?.trim()) {
+        nameInput?.classList.add('form-input--error');
+        const err = document.createElement('p');
+        err.className = 'form-error';
+        err.textContent = 'Please enter your name.';
+        err.setAttribute('role', 'alert');
+        nameInput?.after(err);
+        if (valid) nameInput?.focus();
+        valid = false;
+      }
+      if (!emailInput?.value || !emailRe.test(emailInput.value)) {
+        emailInput?.classList.add('form-input--error');
+        const err = document.createElement('p');
+        err.className = 'form-error';
+        err.textContent = 'Please enter a valid email address.';
+        err.setAttribute('role', 'alert');
+        emailInput?.after(err);
+        if (valid) emailInput?.focus();
+        valid = false;
+      }
+
+      if (valid) {
+        localStorage.setItem('energher_member', 'true');
+        this.innerHTML = '<p class="form-success">Welcome to the EnergHer community! Members-only bundles are now unlocked.</p>';
+      }
+    });
+
+    // ── Back to top ──
+    (function () {
+      const btn = document.getElementById('back-to-top');
+      if (!btn) return;
+      let ticking = false;
+      window.addEventListener('scroll', function () {
+        if (ticking) return;
+        requestAnimationFrame(function () {
+          btn.classList.toggle('is-visible', window.scrollY > 600);
+          ticking = false;
+        });
+        ticking = true;
+      }, { passive: true });
+      btn.addEventListener('click', function () {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    })();
+  </script>
+
+</body>
+</html>

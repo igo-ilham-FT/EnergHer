@@ -1,0 +1,464 @@
+/* ============================================================
+   ENERGHER — story.css
+   Our Story — horizontal scroll-hijacked timeline
+   Inspired by donedrinks.com — GSAP ScrollTrigger driven
+   ============================================================ */
+
+.story {
+  --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
+  --ease-out-expo:  cubic-bezier(0.16, 1, 0.3, 1);
+  --dot-size: 14px;
+  --dot-top: 0.5rem;
+  --line-top: calc(0.75rem + var(--dot-top));
+  --wave-height: 40px;
+
+  padding: clamp(2rem, 4vw, 3rem) 0 0;
+  background: linear-gradient(to bottom, var(--color-surface-2) 60%, color-mix(in srgb, var(--color-surface-2) 70%, var(--color-bg)) 85%, var(--color-bg));
+  position: relative;
+}
+
+/* Large decorative background text — parallax via GSAP */
+.story::before {
+  content: 'OUR STORY';
+  position: absolute;
+  top: 3rem;
+  right: -2rem;
+  font-family: var(--font-display);
+  font-size: clamp(5rem, 14vw, 12rem);
+  font-weight: 900;
+  color: rgba(90, 122, 46, 0.04);
+  letter-spacing: 0.05em;
+  white-space: nowrap;
+  pointer-events: none;
+  user-select: none;
+  will-change: transform;
+  transform: translateY(var(--parallax-y, 0px));
+}
+
+.story__header {
+  text-align: center;
+  margin-bottom: clamp(0.75rem, 1.5vw, 1.25rem);
+  padding: 0 clamp(1.5rem, 5vw, 3rem);
+}
+
+.story__header .section-title {
+  margin-bottom: 0.75rem;
+}
+
+.story__header .section-subtitle {
+  margin: 0 auto;
+}
+
+/* ── Pin wrapper — ScrollTrigger pins this ── */
+.story__pin-wrap {
+  width: 100%;
+  overflow-x: clip;
+  overflow-y: visible;
+}
+
+/* ── Horizontal timeline container ── */
+.timeline {
+  position: relative;
+  display: flex;
+  gap: 2rem;
+  padding: 0.75rem clamp(3rem, 8vw, 6rem) 1rem;
+  will-change: transform;
+}
+
+/* ── Straight connector line between dots ── */
+.timeline__wave {
+  position: absolute;
+  top: calc(0.75rem + var(--dot-top));
+  left: 0;
+  width: 100%;
+  height: 2px;
+  pointer-events: none;
+  z-index: 0;
+  background: linear-gradient(
+    to right,
+    transparent 2%,
+    var(--color-primary) 8%,
+    var(--color-secondary) 50%,
+    var(--color-accent) 92%,
+    transparent 98%
+  );
+  opacity: 0.45;
+  transform-origin: left center;
+  transform: scaleX(0);
+}
+
+/* ── Decorative line art between cards ── */
+.timeline__deco {
+  flex: 0 0 clamp(48px, 5vw, 72px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  opacity: 0;
+  transform: scale(0);
+  pointer-events: none;
+}
+.timeline__deco svg {
+  width: 100%;
+  max-width: 56px;
+  max-height: 72px;
+  overflow: visible;
+}
+/* Transform origin variants — matches Done Drinks grow pattern */
+.timeline__deco--grow-lb { transform-origin: left bottom; }
+.timeline__deco--grow-lt { transform-origin: left top; }
+.timeline__deco--grow-cc { transform-origin: center center; }
+
+/* End spacer — gives last card room to scroll into view */
+.timeline__spacer {
+  flex: 0 0 40vw;
+}
+
+/* ── Timeline item ── */
+.timeline__item {
+  flex: 0 0 clamp(300px, 30vw, 420px);
+  position: relative;
+  padding-top: 1.75rem;
+}
+
+/* Dot on the line */
+.timeline__item::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: calc(var(--dot-top) - var(--dot-size) / 2);
+  width: var(--dot-size);
+  height: var(--dot-size);
+  border-radius: 50%;
+  background: var(--color-primary);
+  border: 3px solid var(--color-surface-2);
+  transform: translateX(-50%) scale(0);
+  z-index: 2;
+  transition: background 0.35s var(--ease-out-quart),
+              transform 0.45s var(--ease-out-expo),
+              box-shadow 0.35s var(--ease-out-quart);
+  box-shadow: 0 0 0 0 rgba(90, 122, 46, 0);
+}
+
+/* Dot visible (GSAP toggles .is-visible) */
+.timeline__item.is-visible::before {
+  background: var(--color-secondary);
+  transform: translateX(-50%) scale(1);
+}
+
+/* Active card state (GSAP toggles .timeline__item--active) */
+.timeline__item.is-visible.timeline__item--active::before {
+  background: var(--color-secondary);
+  transform: translateX(-50%) scale(1.35);
+  box-shadow: 0 0 0 8px rgba(139, 170, 69, 0.18);
+}
+.timeline__item--active .timeline__content {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 40px rgba(90, 122, 46, 0.13);
+  border-color: rgba(139, 170, 69, 0.2);
+}
+.timeline__item--active .timeline__date {
+  background: rgba(139, 170, 69, 0.16);
+}
+
+/* ── Content card ── */
+.timeline__content {
+  text-align: center;
+  padding: 0.75rem 1rem 1rem;
+  border-radius: var(--radius-md);
+  background: var(--color-surface);
+  border: 1px solid transparent;
+  box-shadow: var(--shadow-sm);
+  max-height: calc(100vh - 8rem);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-secondary) transparent;
+  transition: transform 0.35s var(--ease-out-quart),
+              box-shadow 0.35s var(--ease-out-quart),
+              border-color 0.35s var(--ease-out-quart);
+}
+.timeline__item:hover .timeline__content {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+}
+
+/* Connector stem from dot to card */
+.timeline__item::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: calc(var(--dot-top) + var(--dot-size) / 2);
+  width: 2px;
+  height: calc(1.75rem - var(--dot-top) - var(--dot-size) / 2);
+  background: var(--color-secondary);
+  opacity: 0;
+  transform: translateX(-50%) scaleY(0);
+  transform-origin: top center;
+  transition: opacity 0.3s var(--ease-out-quart),
+              transform 0.4s var(--ease-out-expo);
+}
+.timeline__item.is-visible::after {
+  opacity: 0.35;
+  transform: translateX(-50%) scaleY(1);
+}
+.timeline__item--active::after {
+  opacity: 0.55;
+}
+
+/* ── Date badge ── */
+.timeline__date {
+  display: inline-block;
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-secondary);
+  margin-bottom: 0.4rem;
+  padding: 0.2em 0.6em;
+  background: rgba(139, 170, 69, 0.08);
+  border-radius: var(--radius-pill);
+  transition: background 0.3s var(--ease-out-quart);
+}
+.timeline__item:hover .timeline__date {
+  background: rgba(139, 170, 69, 0.14);
+}
+
+/* ── Title — matches brand: display, bold, italic, uppercase ── */
+.timeline__title {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 800;
+  font-style: italic;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: var(--color-primary);
+  margin-bottom: 0.35rem;
+  line-height: 1.2;
+}
+
+/* ── Body text ── */
+.timeline__text {
+  font-size: 0.75rem;
+  color: var(--color-muted);
+  line-height: 1.55;
+  max-width: none;
+  margin: 0 auto;
+}
+
+/* ── Story images ── */
+.timeline__img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: calc(var(--radius-md) - 4px);
+  margin-bottom: 0.5rem;
+  flex-shrink: 0;
+}
+
+/* ── 3-can reveal layout ── */
+.timeline__cans {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  height: clamp(140px, 22vh, 200px);
+  margin-bottom: 0.5rem;
+}
+.timeline__can {
+  height: clamp(130px, 20vh, 180px);
+  width: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.15));
+  transition: transform 0.35s var(--ease-out-quart);
+}
+.timeline__can--left {
+  transform: rotate(-10deg) translateX(20px);
+  z-index: 1;
+}
+.timeline__can--center {
+  transform: translateY(-10px);
+  z-index: 2;
+}
+.timeline__can--right {
+  transform: rotate(10deg) translateX(-20px);
+  z-index: 1;
+}
+.timeline__item:hover .timeline__can--left {
+  transform: rotate(-14deg) translateX(14px);
+}
+.timeline__item:hover .timeline__can--center {
+  transform: translateY(-16px) scale(1.05);
+}
+.timeline__item:hover .timeline__can--right {
+  transform: rotate(14deg) translateX(-14px);
+}
+
+/* ── Launch special item ── */
+.timeline__item--launch {
+  --dot-size: 20px;
+}
+.timeline__item--launch::before {
+  background: var(--color-accent);
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 4px rgba(245, 183, 49, 0.25);
+}
+.timeline__item--launch.is-visible::before {
+  background: var(--color-accent);
+  transform: translateX(-50%) scale(1);
+}
+.timeline__item--launch.is-visible.timeline__item--active::before {
+  background: var(--color-accent);
+  transform: translateX(-50%) scale(1.35);
+  box-shadow: 0 0 0 10px rgba(245, 183, 49, 0.2);
+}
+.timeline__item--launch .timeline__content {
+  border: 2px solid var(--color-accent);
+  background: linear-gradient(
+    to bottom,
+    var(--color-surface),
+    rgba(245, 183, 49, 0.06)
+  );
+  max-height: none;
+  overflow-y: visible;
+}
+.timeline__item--launch .timeline__title {
+  color: var(--color-primary);
+  font-size: 1.35rem;
+}
+.timeline__item--launch .timeline__date {
+  color: var(--color-primary);
+  font-size: 0.75rem;
+  background: rgba(245, 183, 49, 0.35);
+}
+.timeline__item--launch:hover .timeline__date,
+.timeline__item--launch.timeline__item--active .timeline__date {
+  background: rgba(245, 183, 49, 0.5);
+}
+
+/* ── Initial hidden state for GSAP reveals ── */
+.timeline__item.js-reveal {
+  opacity: 0;
+  transform: translateY(28px);
+}
+
+/* ── Scroll hint indicator ── */
+.story__scroll-hint {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 1.25rem 0 1.75rem;
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--color-muted);
+  opacity: 0.5;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transition: opacity 0.5s var(--ease-out-quart);
+}
+.story__scroll-hint svg {
+  width: 14px;
+  height: 14px;
+  animation: hint-arrow 2.2s var(--ease-out-quart) infinite;
+}
+@keyframes hint-arrow {
+  0%, 100% { transform: translateX(0); opacity: 1; }
+  50%      { transform: translateX(6px); opacity: 0.3; }
+  70%      { transform: translateX(0); opacity: 0.8; }
+}
+.story__scroll-hint.is-hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* ── Reduced motion ── */
+@media (prefers-reduced-motion: reduce) {
+  .story::before {
+    will-change: auto;
+  }
+  .timeline__wave {
+    opacity: 0.45;
+  }
+  .timeline__item.js-reveal {
+    opacity: 1;
+    transform: none;
+  }
+  .timeline__item::before {
+    transform: translateX(-50%) scale(1);
+    transition: none;
+  }
+  .timeline__item::after {
+    opacity: 0.35;
+    transform: translateX(-50%) scaleY(1);
+    transition: none;
+  }
+  .timeline__content {
+    transition: none;
+  }
+  .story__scroll-hint svg {
+    animation: none;
+  }
+  .timeline__deco {
+    opacity: 0.7;
+    transform: scale(1);
+  }
+}
+
+/* ── Mobile: no scroll hijacking, swipeable cards ── */
+@media (max-width: 640px) {
+  .story {
+    padding-bottom: 1.5rem;
+  }
+  .story__pin-wrap {
+    overflow: visible;
+  }
+  .timeline {
+    overflow-x: auto;
+    scroll-snap-type: x proximity;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    gap: 1.25rem;
+    padding: 1.5rem 1.25rem 2rem;
+    will-change: auto;
+  }
+  .timeline::-webkit-scrollbar {
+    display: none;
+  }
+  .timeline__wave {
+    opacity: 0.45;
+  }
+  .timeline__item {
+    flex: 0 0 78vw;
+    scroll-snap-align: center;
+  }
+  .timeline__item.js-reveal {
+    opacity: 1;
+    transform: none;
+  }
+  .timeline__item::before {
+    transform: translateX(-50%) scale(1);
+  }
+  .timeline__item::after {
+    opacity: 0.35;
+    transform: translateX(-50%) scaleY(1);
+  }
+  .timeline__content {
+    padding: 1.25rem 1rem;
+    min-height: auto;
+  }
+  .timeline__text {
+    max-width: none;
+  }
+  .timeline__deco {
+    display: none;
+  }
+  .story__scroll-hint {
+    padding: 1rem 0 1.25rem;
+  }
+}

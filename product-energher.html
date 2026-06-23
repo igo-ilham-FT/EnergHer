@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="EnergHer — Formulated for women 40+. Functional ingredients for energy, balance, and clarity.">
+  <title>EnergHer — The Drink</title>
+  <link rel="icon" type="image/png" href="assets/logo.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,600;0,700;0,800;0,900;1,600;1,700;1,800;1,900&family=Barlow:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/global.css">
+  <link rel="stylesheet" href="css/loading.css">
+  <link rel="stylesheet" href="css/product-detail.css">
+  <link rel="stylesheet" href="css/cart.css">
+</head>
+<body class="page-product page-energher">
+
+  <!-- ══ LOADING ══ -->
+  <div id="loading-screen" aria-label="Loading" role="status">
+    <p class="loading__logo">
+      <span class="loading__logo-light">Energ</span><span class="loading__logo-bold">Her</span>
+      <span class="loading__bolt" aria-hidden="true">
+        <img src="assets/logo2.png" alt="" class="loading__bolt-bg">
+        <img src="assets/logo2.png" alt="" class="loading__bolt-fill" id="loading-bar">
+      </span>
+    </p>
+  </div>
+
+  <!-- ══ CART DRAWER ══ -->
+  <aside class="cart-drawer" id="cart-drawer" aria-hidden="true" aria-label="Shopping basket">
+    <div class="cart-drawer__header">
+      <h2>Your Basket</h2>
+      <button class="cart-drawer__close" id="cart-close" aria-label="Close basket">×</button>
+    </div>
+    <div class="cart-drawer__items" id="cart-items" aria-live="polite"></div>
+    <div class="cart-drawer__footer">
+      <div class="cart-drawer__subtotal-row">
+        <span class="cart-drawer__subtotal-label">Subtotal</span>
+        <span class="cart-drawer__subtotal-val" id="cart-subtotal">€0.00</span>
+      </div>
+      <p class="cart-drawer__shipping">Free Shipping ✓</p>
+      <a href="checkout.html" class="btn btn-primary cart-drawer__checkout btn--disabled" id="cart-checkout">
+        Checkout →
+      </a>
+    </div>
+  </aside>
+  <div class="cart-overlay" id="cart-overlay" aria-hidden="true"></div>
+
+  <!-- ══ NAV ══ -->
+  <nav class="nav" id="main-nav" aria-label="Main navigation">
+    <a href="index.html" class="nav__brand" aria-label="EnergHer home">
+      <img src="assets/logo.png" alt="EnergHer" onload="this.nextElementSibling.style.display='none';" onerror="this.style.display='none';this.nextElementSibling.style.display='inline';">
+      <span class="nav__brand-fallback">EnergHer</span>
+    </a>
+    <div class="nav__actions">
+      <button class="nav__cart-btn" id="cart-icon-btn" aria-label="Open basket">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+        <span class="nav__cart-count" id="cart-count" hidden></span>
+      </button>
+      <button class="nav__hamburger" id="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="nav-panel">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ══ NAV PANEL ══ -->
+  <div class="nav-panel" id="nav-panel" aria-hidden="true" role="dialog" aria-label="Navigation menu">
+    <ul class="nav-panel__list" role="list">
+      <li><a href="index.html#hero"     class="nav-panel__link">Home</a></li>
+      <li><a href="index.html#story"    class="nav-panel__link">Our Story</a></li>
+      <li><a href="index.html#products" class="nav-panel__link">Explore Products</a></li>
+      <li><a href="index.html#news"     class="nav-panel__link">News</a></li>
+      <li><a href="index.html#join"     class="nav-panel__link">Membership</a></li>
+    </ul>
+    <div class="nav-panel__newsletter">
+      <h3>Newsletter</h3>
+      <p>Crafted content. Once a month, never more.</p>
+      <form class="nav-panel__newsletter-form" id="nav-nl-form" novalidate>
+        <input type="email" placeholder="Email address" aria-label="Email address" required>
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+  </div>
+
+  <main>
+
+    <!-- ════════════════════════════
+         PRODUCT HERO
+    ════════════════════════════ -->
+    <section class="pd-hero" aria-label="EnergHer product">
+      <span class="pd-hero__bg-text" aria-hidden="true">EnergHer</span>
+
+      <div class="pd-hero__can-wrapper">
+        <div class="can can--xl can--her" id="pd-can" role="img" aria-label="EnergHer can">
+          <img src="assets/can-her-front.png" alt="EnergHer Can" class="can__img" id="hero-can-img"
+               onerror="this.hidden=true">
+          <div class="can__body">
+            <div class="can__label">
+              <span class="can__label-text">EnergHer</span>
+              <span class="can__label-sub">Energy Drink</span>
+            </div>
+            <div class="can__shine"></div>
+          </div>
+          <div class="can__top"></div>
+          <div class="can__bottom"></div>
+        </div>
+      </div>
+
+      <div class="flavor-picker" role="radiogroup" aria-label="Choose flavour">
+        <label class="flavor-picker__option is-active" data-flavor="pineapple-mango">
+          <input type="radio" name="flavor" value="pineapple-mango" checked>
+          <span class="flavor-picker__swatch flavor-picker__swatch--pm"></span>
+          <span class="flavor-picker__name">Pineapple &amp; Mango</span>
+        </label>
+        <label class="flavor-picker__option" data-flavor="peach-raspberry">
+          <input type="radio" name="flavor" value="peach-raspberry">
+          <span class="flavor-picker__swatch flavor-picker__swatch--pr"></span>
+          <span class="flavor-picker__name">Peach &amp; Raspberry</span>
+        </label>
+      </div>
+
+      <p class="pd-hero__subtitle">Formulated for women 40+</p>
+    </section>
+
+    <!-- ════════════════════════════
+         PRODUCT INFO + NUTRITION
+    ════════════════════════════ -->
+    <section class="pd-info" aria-label="Product information">
+      <div class="pd-info__inner">
+
+        <div class="pd-info__text js-reveal">
+          <h2>About EnergHer</h2>
+          <p>EnergHer is a functional carbonated drink formulated for women navigating the changes of midlife. <span id="flavor-desc">Pineapple &amp; Mango</span> flavoured, taurine-free and caffeine-free — energy that works with your body, not against it.</p>
+          <p>Every ingredient is chosen with purpose: from Lion's Mane for cognitive clarity to Vitamin B6 for sustained energy metabolism, and Calcium for everyday wellbeing.</p>
+
+          <h3 class="pd-info__subheading">Approved Health Claims</h3>
+          <ul class="pd-info__claims">
+            <li>Vitamin B6 contributes to the reduction of tiredness and fatigue</li>
+            <li>Vitamin B6 contributes to normal energy-yielding metabolism</li>
+            <li>Calcium contributes to normal energy-yielding metabolism</li>
+          </ul>
+
+          <h3 class="pd-info__subheading">Ingredients</h3>
+          <p class="pd-info__ingredients" id="flavor-ingredients">Water, Erythritol, Calcium lactate, Lion's mane extract, <strong>Soy isoflavones</strong>, Mango flavoring, Citric acid, Pineapple flavoring, Bitterness blocker, Guar gum, Red clover extract, Stevia, Vitamin B6</p>
+
+          <div class="pd-info__allergen">
+            <strong>Allergen information:</strong> Contains soy. Not suitable for individuals with a soy allergy.
+          </div>
+        </div>
+
+        <div class="pd-info__nutrition js-reveal js-reveal--delay-1">
+          <h3>Nutritional Information</h3>
+          <table class="nutrition-table" aria-label="Nutritional values per 100ml and per 330ml">
+            <thead>
+              <tr>
+                <th scope="col">Nutrient</th>
+                <th scope="col">Per 100ml</th>
+                <th scope="col">Per 330ml</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>Energy</td><td>4 kJ / 1 kcal</td><td>13 kJ / 3 kcal</td></tr>
+              <tr><td>Fat</td><td>0 g</td><td>0 g</td></tr>
+              <tr><td>&nbsp;&nbsp;of which Saturates</td><td>0 g</td><td>0 g</td></tr>
+              <tr><td>Carbohydrates</td><td>2.0 g</td><td>6.6 g</td></tr>
+              <tr><td>&nbsp;&nbsp;of which Sugars</td><td>0 g</td><td>0 g</td></tr>
+              <tr><td>Protein</td><td>0 g</td><td>0 g</td></tr>
+              <tr><td>Salt</td><td>0 g</td><td>0 g</td></tr>
+              <tr><td>Vitamin B6</td><td>0.7 mg (50% NRV)</td><td>1.4 mg (100% NRV)</td></tr>
+              <tr><td>Calcium</td><td>48 mg (6% NRV)</td><td>158 mg (20% NRV)</td></tr>
+            </tbody>
+            <caption>NRV = Nutritional Reference Value. Values are indicative.</caption>
+          </table>
+
+          <p class="pd-info__storage">
+            <strong>Best before:</strong> See bottom of can &nbsp;·&nbsp; <strong>Lot:</strong> See bottom of can<br>
+            <strong>Storage:</strong> Store in a cool, dry place. Once opened, consume within 24 hours and refrigerate.
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ════════════════════════════
+         CLAIMS — ORBIT LAYOUT
+    ════════════════════════════ -->
+    <section class="pd-claims" aria-label="Product claims">
+      <div class="orbit-section__header">
+        <h2 class="section-title js-reveal">Why EnergHer Works</h2>
+        <p class="orbit-section__intro js-reveal js-reveal--delay-1">Four key benefits, scientifically informed and purposefully formulated.</p>
+        <div class="divider js-reveal js-reveal--delay-2"></div>
+      </div>
+
+      <div class="orbit-layout js-reveal" id="claims-orbit" aria-label="Claims surrounding EnergHer can">
+        <span class="orbit-layout__bg-text" aria-hidden="true">EnergHer</span>
+
+        <div class="orbit-layout__line" aria-hidden="true"></div>
+
+        <div class="orbit-layout__center">
+          <div class="can can--md can--her" aria-label="EnergHer can">
+            <img src="assets/can-her-front.png" alt="EnergHer" class="can__img" id="orbit-can-img" loading="lazy"
+                 onerror="this.hidden=true">
+            <div class="can__body">
+              <div class="can__label">
+                <span class="can__label-text">Her</span>
+              </div>
+              <div class="can__shine"></div>
+            </div>
+            <div class="can__top"></div>
+            <div class="can__bottom"></div>
+          </div>
+        </div>
+
+        <div class="orbit-layout__ring" aria-hidden="true">
+          <div class="orbit-item" style="--orbit-angle: -90deg;">
+            <div class="orbit-item__pill">Relieves Hot Flushes</div>
+            <div class="orbit-item__tooltip">Red clover and soy isoflavones can relieve hot flashes according to scientific journals.</div>
+          </div>
+          <div class="orbit-item" style="--orbit-angle: 0deg;">
+            <div class="orbit-item__pill">Boosts Energy</div>
+            <div class="orbit-item__tooltip">Vitamin B6 contributes to normal energy-yielding metabolism.</div>
+          </div>
+          <div class="orbit-item" style="--orbit-angle: 90deg;">
+            <div class="orbit-item__pill">Reduces Fatigue</div>
+            <div class="orbit-item__tooltip">Vitamin B6 contributes to the reduction of tiredness and fatigue. Soy isoflavones can also reduce fatigue according to scientific journals.</div>
+          </div>
+          <div class="orbit-item" style="--orbit-angle: 180deg;">
+            <div class="orbit-item__pill">Clears Brain Fog</div>
+            <div class="orbit-item__tooltip">Lion's mane can help relieve brain fog according to scientific journals.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════
+         INGREDIENTS — CARD GRID
+    ════════════════════════════ -->
+    <section class="pd-ingredients" aria-label="Key ingredients">
+      <div class="orbit-section__header">
+        <h2 class="section-title js-reveal">Key Ingredients</h2>
+        <p class="orbit-section__intro js-reveal js-reveal--delay-1">Every ingredient chosen for a reason. Every reason backed by research.</p>
+        <div class="divider js-reveal js-reveal--delay-2"></div>
+      </div>
+
+      <div class="ingredients-grid" aria-label="Key ingredients list">
+        <div class="ingredient-card js-reveal">
+          <span class="ingredient-card__name">Red Clover</span>
+          <p class="ingredient-card__benefit">Helps relieve hot flushes and supports hormonal balance through natural isoflavones.</p>
+        </div>
+        <div class="ingredient-card js-reveal js-reveal--delay-1">
+          <span class="ingredient-card__name">Soy Isoflavones</span>
+          <p class="ingredient-card__benefit">Clinically studied plant compounds that reduce hot flush frequency and combat fatigue.</p>
+        </div>
+        <div class="ingredient-card js-reveal js-reveal--delay-2">
+          <span class="ingredient-card__name">Vitamin B6</span>
+          <p class="ingredient-card__benefit">Essential vitamin that helps reduce tiredness and supports normal energy-yielding metabolism.</p>
+        </div>
+        <div class="ingredient-card js-reveal js-reveal--delay-3">
+          <span class="ingredient-card__name">Lion's Mane</span>
+          <p class="ingredient-card__benefit">Adaptogenic mushroom that supports cognitive function and helps clear brain fog.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════
+         ADD TO BASKET
+    ════════════════════════════ -->
+    <section class="pd-purchase" aria-label="Purchase options">
+      <div class="pd-purchase__inner">
+
+        <div class="pd-purchase__header">
+          <h2 class="section-title js-reveal">Choose Your Bundle</h2>
+          <p class="js-reveal js-reveal--delay-1">Free shipping on all orders. Members-only bundles available after joining.</p>
+        </div>
+
+        <div class="pd-purchase__product js-reveal" id="purchase-product-tag">
+          <div class="can can--xs can--her">
+            <img src="assets/can-her-front.png" alt="EnergHer Can" class="can__img" id="purchase-can-img" loading="lazy"
+                 onerror="this.hidden=true">
+            <div class="can__body">
+              <div class="can__label">
+                <span class="can__label-text">Her</span>
+              </div>
+              <div class="can__shine"></div>
+            </div>
+            <div class="can__top"></div>
+            <div class="can__bottom"></div>
+          </div>
+          <div class="pd-purchase__product-info">
+            <p class="pd-purchase__product-name">EnergHer</p>
+            <p class="pd-purchase__product-flavor" id="purchase-flavor">Pineapple &amp; Mango</p>
+            <p class="pd-purchase__product-size">330ml · Caffeine-free · Taurine-free</p>
+          </div>
+        </div>
+
+        <div class="bundle-grid" role="radiogroup" aria-label="Bundle options">
+
+          <label class="bundle-option js-reveal" data-qty="4" data-price="11.90">
+            <input type="radio" name="bundle" value="4" checked aria-label="4-pack, €11.90, recommended">
+            <div class="bundle-option__card">
+              <span class="bundle-option__badge bundle-option__badge--rec">Recommended</span>
+              <span class="bundle-option__qty">4-Pack</span>
+              <span class="bundle-option__price">€11.90</span>
+              <span class="bundle-option__free-ship">Free shipping</span>
+            </div>
+          </label>
+
+          <label class="bundle-option js-reveal js-reveal--delay-1" data-qty="8" data-price="22.90">
+            <input type="radio" name="bundle" value="8" aria-label="8-pack, €22.90">
+            <div class="bundle-option__card">
+              <span class="bundle-option__qty">8-Pack</span>
+              <span class="bundle-option__price">€22.90</span>
+              <span class="bundle-option__free-ship">Free shipping</span>
+            </div>
+          </label>
+
+          <label class="bundle-option bundle-option--members js-reveal js-reveal--delay-2" data-qty="14" data-price="39.90">
+            <input type="radio" name="bundle" value="14" aria-label="14-pack, €39.90, members only">
+            <div class="bundle-option__card">
+              <span class="bundle-option__badge">Members Only</span>
+              <span class="bundle-option__qty">14-Pack</span>
+              <span class="bundle-option__price">€39.90</span>
+              <span class="bundle-option__free-ship">Free shipping</span>
+            </div>
+          </label>
+
+          <label class="bundle-option bundle-option--members js-reveal js-reveal--delay-3" data-qty="30" data-price="79.90">
+            <input type="radio" name="bundle" value="30" aria-label="30-pack, €79.90, members only">
+            <div class="bundle-option__card">
+              <span class="bundle-option__badge">Members Only</span>
+              <span class="bundle-option__qty">30-Pack</span>
+              <span class="bundle-option__price">€79.90</span>
+              <span class="bundle-option__free-ship">Free shipping</span>
+            </div>
+          </label>
+
+        </div>
+
+        <div class="pd-purchase__actions js-reveal">
+          <div class="qty-selector" role="group" aria-label="Quantity">
+            <button class="qty-selector__btn" id="qty-minus" aria-label="Decrease quantity">−</button>
+            <span class="qty-selector__val" id="qty-val" aria-live="polite" aria-atomic="true">1</span>
+            <button class="qty-selector__btn" id="qty-plus" aria-label="Increase quantity">+</button>
+          </div>
+          <p class="shipping-badge">Free Shipping Included</p>
+          <button class="btn btn-primary pd-purchase__add" id="add-to-cart" aria-label="Add to basket">
+            Add to Basket
+          </button>
+        </div>
+
+        <p class="pd-purchase__note">
+          Not yet a member? <a href="index.html#join" class="pd-purchase__join-link">Join free</a> to unlock 14 &amp; 30-pack bundles.
+        </p>
+
+      </div>
+    </section>
+
+    <!-- ════════════════════════════
+         CROSS-SELL: ENERGHIM
+    ════════════════════════════ -->
+    <section class="pd-related" aria-label="You might also like">
+      <div class="pd-related__header">
+        <h2 class="section-title js-reveal">You Might Also Try</h2>
+      </div>
+      <a href="product-energhim.html" class="pd-related__card js-reveal" aria-label="View EnergHim product">
+        <div class="can can--lg can--him can--interactive" aria-label="EnergHim can">
+          <img src="assets/energhim.png" alt="EnergHim Can" class="can__img" loading="lazy"
+               onerror="this.hidden=true">
+          <div class="can__body">
+            <div class="can__label">
+              <span class="can__label-text">EnergHim</span>
+              <span class="can__label-sub">Energy Drink</span>
+            </div>
+            <div class="can__shine"></div>
+          </div>
+          <div class="can__top"></div>
+          <div class="can__bottom"></div>
+        </div>
+        <p class="pd-related__name">EnergHim</p>
+        <p class="pd-related__desc">Designed for his endurance</p>
+        <span class="btn btn-ghost" aria-hidden="true">View Product</span>
+      </a>
+    </section>
+
+    <!-- ════════════════════════════
+         NAVIGATION LINKS
+    ════════════════════════════ -->
+    <nav class="pd-nav" aria-label="Page navigation">
+      <a href="index.html#products" class="btn btn-ghost back-link">← Back to Products</a>
+      <a href="index.html" class="btn btn-primary">← Back to Home</a>
+    </nav>
+
+  </main>
+
+  <!-- ══ BACK TO TOP ══ -->
+  <button class="back-to-top" id="back-to-top" aria-label="Back to top" hidden>
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
+  </button>
+
+  <footer class="footer" role="contentinfo">
+    <div class="footer__inner">
+      <div class="footer__brand-col">
+        <p class="footer__brand">EnergHer</p>
+        <p class="footer__tagline">Energy for your healthy aging lifestyle.</p>
+        <div class="footer__social" aria-label="Social media links">
+          <a href="#" class="footer__social-link" aria-label="Instagram"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+          <a href="#" class="footer__social-link" aria-label="TikTok"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"/></svg></a>
+          <a href="#" class="footer__social-link" aria-label="LinkedIn"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a>
+          <a href="#" class="footer__social-link" aria-label="Email"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></a>
+        </div>
+      </div>
+      <nav class="footer__nav" aria-label="Footer navigation">
+        <div class="footer__nav-group">
+          <h4 class="footer__nav-heading">Explore</h4>
+          <ul>
+            <li><a href="index.html#products">Products</a></li>
+            <li><a href="index.html#story">Our Story</a></li>
+            <li><a href="index.html#news">News</a></li>
+            <li><a href="index.html#join">Membership</a></li>
+          </ul>
+        </div>
+        <div class="footer__nav-group">
+          <h4 class="footer__nav-heading">Products</h4>
+          <ul>
+            <li><a href="product-energher.html">EnergHer</a></li>
+            <li><a href="product-energhim.html">EnergHim</a></li>
+          </ul>
+        </div>
+        <div class="footer__nav-group">
+          <h4 class="footer__nav-heading">Legal</h4>
+          <ul>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Terms of Service</a></li>
+            <li><a href="#">Cookie Policy</a></li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+    <div class="footer__bottom">
+      <p class="footer__copy">&copy; 2026 EnergHer. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="js/loading.js"></script>
+  <script src="js/nav.js"></script>
+  <script src="js/scroll-animations.js"></script>
+  <script src="js/product-detail.js"></script>
+  <script src="js/cart.js"></script>
+  <script>
+    // Back to top
+    (function () {
+      var btn = document.getElementById('back-to-top');
+      if (!btn) return;
+      var ticking = false;
+      window.addEventListener('scroll', function () {
+        if (ticking) return;
+        requestAnimationFrame(function () {
+          btn.classList.toggle('is-visible', window.scrollY > 600);
+          ticking = false;
+        });
+        ticking = true;
+      }, { passive: true });
+      btn.addEventListener('click', function () {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    })();
+  </script>
+
+</body>
+</html>

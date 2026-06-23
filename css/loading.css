@@ -1,0 +1,95 @@
+/* ============================================================
+   ENERGHER — loading.css
+   Loading screen with logo + lightning bolt fill behind text
+   ============================================================ */
+
+#loading-screen {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-bg);
+  transition: opacity 0.8s var(--ease), visibility 0.8s var(--ease);
+}
+
+#loading-screen.is-hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+/* ── Container: stacks bolt behind text ── */
+.loading__logo {
+  position: relative;
+  display: inline-block;
+  font-family: var(--font-display);
+  font-size: clamp(3.5rem, 12vw, 6.5rem);
+  font-style: italic;
+  text-transform: uppercase;
+  color: var(--color-primary);
+  letter-spacing: 0.04em;
+  line-height: 1;
+  animation: loading-entrance 0.8s var(--ease) both;
+  filter: drop-shadow(0 4px 16px rgba(90, 122, 46, 0.18));
+}
+
+.loading__logo-light {
+  font-weight: 400;
+}
+
+.loading__logo-bold {
+  font-weight: 900;
+}
+
+@keyframes loading-entrance {
+  from {
+    opacity: 0;
+    transform: translateY(12px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* ── Lightning bolt — sits behind the text ── */
+.loading__bolt {
+  position: absolute;
+  top: -28%;
+  left: -20%;
+  transform: translate(-50%, -50%);
+  width: 140%;
+  z-index: -1;
+  pointer-events: none;
+  animation: loading-entrance 0.8s var(--ease) 0.2s both;
+  filter: drop-shadow(0 3px 10px rgba(245, 195, 80, 0.3));
+}
+
+.loading__bolt-bg,
+.loading__bolt-fill {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* Ghost bolt — faint silhouette */
+.loading__bolt-bg {
+  opacity: 0.12;
+  filter: grayscale(1);
+}
+
+/* Filled bolt — swipes left-to-right */
+.loading__bolt-fill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  clip-path: inset(0 100% 0 0);
+  filter: brightness(0.92) saturate(1.4);
+  transition: clip-path 2.5s cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+
+.loading__bolt-fill.is-filling {
+  clip-path: inset(0 0% 0 0);
+}

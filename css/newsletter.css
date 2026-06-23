@@ -1,0 +1,223 @@
+/* ============================================================
+   ENERGHER — newsletter.css
+   Newsletter + Membership — inspired by donedrinks.com
+   ============================================================ */
+
+.join {
+  background: var(--color-primary);
+  padding: clamp(6rem, 12vw, 10rem) clamp(1.5rem, 5vw, 3rem);
+  position: relative;
+  overflow: hidden;
+}
+
+.join::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse 70% 80% at 30% 50%,
+    rgba(245, 183, 49, 0.06) 0%,
+    transparent 65%
+  );
+  pointer-events: none;
+}
+
+
+.join__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(3rem, 7vw, 7rem);
+  max-width: 1100px;
+  margin: 0 auto;
+  position: relative;
+}
+
+/* Vertical divider between columns */
+.join__grid::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 1px;
+  background: linear-gradient(to bottom, transparent, rgba(245,183,49,0.15), transparent);
+  transform: translateX(-50%);
+}
+
+@media (max-width: 768px) {
+  .join__grid {
+    grid-template-columns: 1fr;
+    gap: 3.5rem;
+  }
+  .join__grid::before { display: none; }
+}
+
+/* ── Newsletter half ── */
+.join__newsletter .section-title,
+.join__membership .section-title {
+  color: var(--color-accent);
+  font-size: clamp(1.6rem, 3vw, 2.5rem);
+  margin-bottom: 0.75rem;
+}
+
+.join__newsletter p,
+.join__membership p {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.92rem;
+  margin-bottom: 1.75rem;
+  font-weight: 300;
+  line-height: 1.65;
+}
+
+.newsletter-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.newsletter-form__row {
+  display: flex;
+  gap: 0.5rem;
+}
+@media (max-width: 480px) {
+  .newsletter-form__row { flex-direction: column; }
+}
+
+.newsletter-form input[type="email"] {
+  flex: 1;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: var(--radius-pill);
+  padding: 0.85em 1.5em;
+  color: #fff;
+  font-size: 0.9rem;
+  transition: border-color 0.3s var(--ease), background 0.3s var(--ease);
+}
+.newsletter-form input[type="email"]::placeholder { color: rgba(255, 255, 255, 0.5); }
+.newsletter-form input[type="email"]:focus {
+  border-color: rgba(255, 255, 255, 0.5);
+  background: rgba(255, 255, 255, 0.18);
+  outline: none;
+}
+
+.newsletter-form button {
+  background: var(--color-accent);
+  color: var(--color-primary);
+  border-radius: var(--radius-pill);
+  padding: 0.85em 2em;
+  font-weight: 700;
+  font-size: 0.85rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  transition: background 0.3s var(--ease), transform 0.3s var(--ease-spring),
+              box-shadow 0.3s var(--ease);
+  white-space: nowrap;
+}
+.newsletter-form button:hover {
+  background: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(245, 183, 49, 0.2);
+}
+
+.form-success {
+  color: var(--color-accent);
+  font-size: 0.9rem;
+  font-style: italic;
+  padding: 0.75rem 1rem;
+  background: rgba(245, 183, 49, 0.08);
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(245, 183, 49, 0.2);
+  animation: fade-in 0.4s var(--ease);
+}
+
+/* ── Membership half — elevated card ── */
+.join__membership {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-xl);
+  padding: clamp(2rem, 4vw, 3rem);
+}
+
+.membership__benefits {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-bottom: 2rem;
+}
+
+.membership__benefits li {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+.membership__benefits li::before {
+  content: '\2713';
+  color: var(--color-accent);
+  font-weight: 700;
+  flex-shrink: 0;
+  width: 1.5rem;
+  height: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: rgba(245, 183, 49, 0.1);
+  font-size: 0.7rem;
+}
+
+.membership-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.membership-form input {
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: var(--radius-md);
+  padding: 0.85em 1.5em;
+  color: #fff;
+  font-size: 0.9rem;
+  transition: border-color 0.3s var(--ease), background 0.3s var(--ease);
+}
+.membership-form input::placeholder { color: rgba(255, 255, 255, 0.5); }
+.membership-form input:focus {
+  border-color: rgba(255, 255, 255, 0.5);
+  background: rgba(255, 255, 255, 0.18);
+  outline: none;
+}
+.membership-form button {
+  background: var(--color-accent);
+  color: var(--color-primary);
+  border-radius: var(--radius-pill);
+  padding: 0.9em 2em;
+  font-weight: 700;
+  font-size: 0.88rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  transition: background 0.3s var(--ease), transform 0.3s var(--ease-spring),
+              box-shadow 0.3s var(--ease);
+  margin-top: 0.25rem;
+}
+.membership-form button:hover {
+  background: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(245, 183, 49, 0.2);
+}
+.membership-form button:active,
+.newsletter-form button:active {
+  transform: translateY(0);
+  box-shadow: none;
+}
+
+/* Dark-background form validation states */
+.join .form-input--error {
+  border-color: #ff6b6b !important;
+  background: rgba(255, 107, 107, 0.12) !important;
+}
+.join .form-error {
+  color: #ff9999;
+}

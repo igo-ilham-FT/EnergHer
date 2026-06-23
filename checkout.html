@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Complete your EnergHer order. Free shipping on all bundles.">
+  <title>Checkout — EnergHer</title>
+  <link rel="icon" type="image/png" href="assets/logo.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,600;0,700;0,800;0,900;1,600;1,700;1,800;1,900&family=Barlow:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/global.css">
+  <link rel="stylesheet" href="css/loading.css">
+  <link rel="stylesheet" href="css/checkout.css">
+</head>
+<body>
+
+  <!-- ══ LOADING ══ -->
+  <div id="loading-screen" aria-label="Loading" role="status">
+    <p class="loading__logo">
+      <span class="loading__logo-light">Energ</span><span class="loading__logo-bold">Her</span>
+      <span class="loading__bolt" aria-hidden="true">
+        <img src="assets/logo2.png" alt="" class="loading__bolt-bg">
+        <img src="assets/logo2.png" alt="" class="loading__bolt-fill" id="loading-bar">
+      </span>
+    </p>
+  </div>
+
+  <!-- ══ NAV ══ -->
+  <nav class="nav" id="main-nav" style="background:rgba(255,249,236,0.95);backdrop-filter:blur(12px);" aria-label="Main navigation">
+    <a href="index.html" class="nav__brand" aria-label="EnergHer home">
+      <img src="assets/logo.png" alt="EnergHer" onload="this.nextElementSibling.style.display='none';" onerror="this.style.display='none';this.nextElementSibling.style.display='inline';">
+      <span class="nav__brand-fallback">EnergHer</span>
+    </a>
+  </nav>
+
+  <main class="checkout-page" aria-label="Checkout">
+
+    <div class="checkout-page__inner">
+
+      <!-- ════ FORM COLUMN ════ -->
+      <div class="checkout-page__form">
+        <a href="index.html#products" class="checkout-page__back">← Back to Products</a>
+        <h1>Checkout</h1>
+
+        <!-- Success message (hidden until submit) -->
+        <div id="checkout-success" hidden>
+          <h2>Order Received!</h2>
+          <p>Thank you for your order. This is a mockup — no real order has been placed.</p>
+          <a href="index.html" class="btn btn-primary" style="display:inline-flex;">← Back to Home</a>
+        </div>
+
+        <div id="checkout-form-wrap">
+          <form id="checkout-form" novalidate>
+
+            <!-- Contact -->
+            <fieldset class="checkout-fieldset">
+              <legend>Contact</legend>
+              <div style="margin-top:1.25rem;">
+                <label class="checkout-input-label" for="co-email">Email address *</label>
+                <input class="checkout-input" type="email" id="co-email" name="email" placeholder="you@email.com" required aria-required="true">
+              </div>
+              <label class="checkout-terms" style="margin-top:1rem;">
+                <input type="checkbox" name="newsletter" value="yes">
+                Sign me up for the latest health research, wellness tips, and exclusive offers.
+              </label>
+            </fieldset>
+
+            <!-- Delivery -->
+            <fieldset class="checkout-fieldset">
+              <legend>Delivery Address</legend>
+              <div class="checkout-fieldset__grid">
+                <div>
+                  <label class="checkout-input-label" for="co-firstname">First name (optional)</label>
+                  <input class="checkout-input" type="text" id="co-firstname" name="firstname" placeholder="Jane">
+                </div>
+                <div>
+                  <label class="checkout-input-label" for="co-lastname">Last name *</label>
+                  <input class="checkout-input" type="text" id="co-lastname" name="lastname" placeholder="Smith" required aria-required="true">
+                </div>
+                <div class="full-width">
+                  <label class="checkout-input-label" for="co-address1">Address *</label>
+                  <input class="checkout-input" type="text" id="co-address1" name="address1" placeholder="Street address" required aria-required="true">
+                </div>
+                <div class="full-width">
+                  <label class="checkout-input-label" for="co-address2">Apartment, suite, etc. (optional)</label>
+                  <input class="checkout-input" type="text" id="co-address2" name="address2" placeholder="Apt 4B">
+                </div>
+                <div>
+                  <label class="checkout-input-label" for="co-city">City *</label>
+                  <input class="checkout-input" type="text" id="co-city" name="city" placeholder="Dublin" required aria-required="true">
+                </div>
+                <div>
+                  <label class="checkout-input-label" for="co-postcode">Postcode *</label>
+                  <input class="checkout-input" type="text" id="co-postcode" name="postcode" placeholder="D02 XY00" required aria-required="true">
+                </div>
+                <div class="full-width">
+                  <label class="checkout-input-label" for="co-country">Country *</label>
+                  <select class="checkout-input" id="co-country" name="country" required aria-required="true">
+                    <option value="">Select country…</option>
+                    <option value="IE" selected>Ireland</option>
+                    <option value="GB">United Kingdom</option>
+                    <option value="DE">Germany</option>
+                    <option value="FR">France</option>
+                    <option value="NL">Netherlands</option>
+                    <option value="BE">Belgium</option>
+                    <option value="ES">Spain</option>
+                    <option value="IT">Italy</option>
+                    <option value="Other">Other</option>
+                  </select>
+                </div>
+                <div class="full-width">
+                  <label class="checkout-input-label" for="co-phone">Phone *</label>
+                  <input class="checkout-input" type="tel" id="co-phone" name="phone" placeholder="+353 01 234 5678" required aria-required="true">
+                </div>
+              </div>
+            </fieldset>
+
+            <label class="checkout-terms">
+              <input type="checkbox" name="terms" id="co-terms" required aria-required="true">
+              I accept the <button type="button" id="terms-toggle" style="color:var(--color-primary);text-decoration:underline;background:none;border:none;font:inherit;cursor:pointer;padding:0;">terms of service</button>.
+            </label>
+            <details id="terms-details" style="margin-bottom:1rem;font-size:0.82rem;color:var(--color-muted);line-height:1.7;">
+              <summary style="cursor:pointer;font-weight:600;color:var(--color-primary);margin-bottom:0.5rem;">Terms of Service</summary>
+              <p>This is a mockup checkout for EnergHer. No real orders are processed. By checking the box above, you acknowledge this is a demonstration. In a live environment, full terms of service, privacy policy, and return policy would be provided here. All personal data entered in this mockup is stored locally on your device only and is not transmitted to any server.</p>
+            </details>
+
+            <button type="submit" class="btn btn-primary checkout-submit-btn" id="checkout-submit">
+              Complete Order →
+            </button>
+
+            <p style="font-size:0.75rem;color:var(--color-muted);margin-top:0.75rem;text-align:center;">
+              This is a mockup checkout — no payment or real order will be processed.
+            </p>
+
+          </form>
+        </div>
+      </div>
+
+      <!-- ════ SUMMARY COLUMN ════ -->
+      <aside class="checkout-page__summary" aria-label="Order summary">
+        <div class="checkout-summary-card">
+          <h2>Order Summary</h2>
+
+          <!-- Items populated by cart.js -->
+          <div id="checkout-items" aria-live="polite"></div>
+
+          <div class="checkout-summary-totals">
+            <div class="checkout-summary-row">
+              <span>Subtotal</span>
+              <span id="checkout-total">€0.00</span>
+            </div>
+            <div class="checkout-summary-row">
+              <span>Shipping</span>
+              <span style="color:var(--color-secondary);font-weight:600;">Free</span>
+            </div>
+            <div class="checkout-summary-row checkout-summary-row--total">
+              <span>Total</span>
+              <span id="checkout-grand-total">€0.00</span>
+            </div>
+          </div>
+          <p class="checkout-free-ship">✓ Free shipping on all orders</p>
+        </div>
+      </aside>
+
+    </div>
+
+  </main>
+
+  <footer class="footer" role="contentinfo">
+    <div class="footer__inner">
+      <div class="footer__brand-col">
+        <p class="footer__brand">EnergHer</p>
+        <p class="footer__tagline">Energy for your healthy aging lifestyle.</p>
+      </div>
+      <nav class="footer__nav" aria-label="Footer navigation">
+        <div class="footer__nav-group">
+          <h4 class="footer__nav-heading">Explore</h4>
+          <ul>
+            <li><a href="index.html#products">Products</a></li>
+            <li><a href="index.html#story">Our Story</a></li>
+            <li><a href="index.html#join">Membership</a></li>
+          </ul>
+        </div>
+        <div class="footer__nav-group">
+          <h4 class="footer__nav-heading">Legal</h4>
+          <ul>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Terms of Service</a></li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+    <div class="footer__bottom">
+      <p class="footer__copy">&copy; 2026 EnergHer. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="js/loading.js"></script>
+  <script src="js/cart.js"></script>
+  <script>
+    // Sync grand total with subtotal (shipping always free)
+    const observer = new MutationObserver(() => {
+      const total = document.getElementById('checkout-total');
+      const grand = document.getElementById('checkout-grand-total');
+      if (total && grand) grand.textContent = total.textContent;
+    });
+    const el = document.getElementById('checkout-total');
+    if (el) observer.observe(el, { childList: true, subtree: true });
+
+    // Terms toggle
+    document.getElementById('terms-toggle')?.addEventListener('click', () => {
+      const d = document.getElementById('terms-details');
+      if (d) d.open = !d.open;
+    });
+  </script>
+
+</body>
+</html>

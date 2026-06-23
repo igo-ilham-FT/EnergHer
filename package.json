@@ -1,0 +1,11 @@
+{
+  "name": "energher",
+  "version": "1.0.0",
+  "description": "EnergHer - Energy drink brand website",
+  "scripts": {
+    "dev": "vercel dev",
+    "serve": "npx serve@latest . -l 3000",
+    "start": "vercel dev"
+  },
+  "private": true
+}

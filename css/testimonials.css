@@ -1,0 +1,135 @@
+/* ============================================================
+   ENERGHER — testimonials.css
+   Customer reviews — inspired by hydroflowdrink.com
+   ============================================================ */
+
+.testimonials {
+  padding: clamp(6rem, 12vw, 10rem) clamp(1.5rem, 5vw, 3rem);
+  background: linear-gradient(to bottom, var(--color-bg) 60%, color-mix(in srgb, var(--color-bg) 70%, var(--color-primary)) 85%, var(--color-primary));
+  overflow: hidden;
+  position: relative;
+}
+
+/* Giant quote mark decoration */
+.testimonials::before {
+  content: '\201C';
+  position: absolute;
+  top: -1.5rem;
+  left: 2rem;
+  font-family: var(--font-display);
+  font-size: clamp(12rem, 28vw, 24rem);
+  font-weight: 900;
+  color: rgba(90, 122, 46, 0.04);
+  line-height: 1;
+  pointer-events: none;
+  user-select: none;
+}
+
+.testimonials__header {
+  text-align: center;
+  margin-bottom: clamp(3rem, 6vw, 5rem);
+}
+
+.testimonials__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.testimonial-card {
+  background: var(--color-surface);
+  border-radius: var(--radius-lg);
+  padding: 2.5rem 2.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.15rem;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--color-border);
+  position: relative;
+  transition: transform 0.4s var(--ease), box-shadow 0.4s var(--ease),
+              border-color 0.3s var(--ease);
+}
+.testimonial-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-md);
+  border-color: rgba(90, 122, 46, 0.25);
+}
+
+/* Decorative quote mark */
+.testimonial-card::before {
+  content: '\201C';
+  position: absolute;
+  top: 0.75rem;
+  right: 1.5rem;
+  font-family: var(--font-display);
+  font-size: 4.5rem;
+  color: var(--color-accent);
+  line-height: 1;
+  font-weight: 900;
+  opacity: 0.7;
+}
+
+/* Accent top border */
+.testimonial-card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 1.5rem;
+  right: 1.5rem;
+  height: 3px;
+  background: linear-gradient(90deg, var(--color-primary), var(--color-secondary));
+  border-radius: 0 0 var(--radius-sm) var(--radius-sm);
+  opacity: 0;
+  transition: opacity 0.3s var(--ease);
+}
+.testimonial-card:hover::after {
+  opacity: 1;
+}
+
+.testimonial-card__stars {
+  font-size: 1rem;
+  letter-spacing: 0.1em;
+  color: var(--color-secondary);
+}
+
+.testimonial-card__quote {
+  font-size: 0.97rem;
+  line-height: 1.75;
+  color: var(--color-text);
+  font-style: italic;
+  flex: 1;
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+
+.testimonial-card__author {
+  font-size: 0.83rem;
+  font-weight: 600;
+  color: var(--color-primary);
+  letter-spacing: 0.04em;
+  font-style: normal;
+}
+
+.testimonial-card__product {
+  font-size: 0.72rem;
+  color: var(--color-muted);
+  font-style: normal;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+/* Staggered reveal for cards */
+.testimonial-card.js-reveal:nth-child(1) { transition-delay: 0s; }
+.testimonial-card.js-reveal:nth-child(2) { transition-delay: 0.12s; }
+.testimonial-card.js-reveal:nth-child(3) { transition-delay: 0.24s; }
+
+/* Verified badge */
+.testimonial-card__author::after {
+  content: ' \2713';
+  color: var(--color-secondary);
+  font-size: 0.75em;
+  font-weight: 800;
+}

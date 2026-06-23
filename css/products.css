@@ -1,0 +1,178 @@
+/* ============================================================
+   ENERGHER — products.css
+   Products grid — two cards side by side
+   ============================================================ */
+
+.products {
+  background: linear-gradient(to bottom, var(--color-primary) 60%, color-mix(in srgb, var(--color-primary) 70%, var(--color-surface-2)) 85%, var(--color-surface-2));
+  padding: clamp(6rem, 12vw, 10rem) 0;
+  overflow: hidden;
+  position: relative;
+}
+
+.products::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse 80% 60% at 50% 50%,
+    rgba(139, 170, 69, 0.12) 0%,
+    transparent 70%
+  );
+  pointer-events: none;
+}
+
+/* Header */
+.products__header {
+  text-align: center;
+  padding: 0 clamp(1.5rem, 6vw, 5rem);
+  margin-bottom: clamp(2.5rem, 5vw, 4rem);
+}
+
+.products__title {
+  color: var(--color-accent);
+  font-size: clamp(2.8rem, 7vw, 5.5rem);
+  font-weight: 900;
+  font-style: italic;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  line-height: 1;
+}
+
+.products__title em {
+  font-style: italic;
+  display: block;
+  font-size: 0.45em;
+  color: rgba(245, 183, 49, 0.5);
+  font-family: var(--font-body);
+  font-weight: 400;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+
+/* ── Products Grid ── */
+.products-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(1.5rem, 3vw, 2.5rem);
+  padding: 0 clamp(1.5rem, 6vw, 5rem);
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* Cards */
+.product-card {
+  background: var(--color-bg);
+  border-radius: var(--radius-xl);
+  padding: clamp(2.5rem, 4vw, 4rem) clamp(2rem, 3vw, 3.5rem);
+  display: flex;
+  gap: clamp(1.5rem, 3vw, 3rem);
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.12);
+  transition: transform 0.5s var(--ease), box-shadow 0.4s var(--ease);
+}
+.product-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 16px 56px rgba(0, 0, 0, 0.18), 0 0 0 1px rgba(90, 122, 46, 0.08);
+}
+.product-card:active {
+  transform: translateY(-4px);
+}
+
+/* Decorative accent stripe at top */
+.product-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--color-primary), var(--color-accent));
+  border-radius: var(--radius-xl) var(--radius-xl) 0 0;
+}
+
+.product-card__left {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  min-width: 0;
+  flex: 1;
+  position: relative;
+  z-index: 1;
+}
+
+.product-card__tag {
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-secondary);
+  font-weight: 600;
+}
+
+.product-card__name {
+  font-family: var(--font-display);
+  font-size: clamp(2.25rem, 5vw, 3.5rem);
+  font-weight: 900;
+  font-style: italic;
+  text-transform: uppercase;
+  color: var(--color-primary);
+  letter-spacing: 0.03em;
+  line-height: 1;
+}
+
+.product-card__desc {
+  font-size: 0.88rem;
+  color: var(--color-muted);
+  line-height: 1.7;
+  max-width: 32ch;
+}
+
+.product-card__right {
+  position: relative;
+  z-index: 1;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.5s var(--ease-spring);
+}
+.product-card__right .can {
+  width: clamp(140px, 14vw, 220px);
+  height: clamp(280px, 28vw, 440px);
+}
+.product-card__right .can__img {
+  object-fit: cover;
+  object-position: center;
+}
+.product-card:hover .product-card__right {
+  transform: translateY(-6px) scale(1.03);
+}
+
+.product-card__cta {
+  align-self: flex-start;
+  font-size: 0.82rem;
+  padding: 0.7em 1.8em;
+  letter-spacing: 0.06em;
+}
+
+/* ── Responsive: stack on mobile ── */
+@media (max-width: 900px) {
+  .products-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .product-card {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2rem;
+    padding: 2rem 1.5rem;
+  }
+  .product-card__right {
+    align-self: center;
+  }
+}
