@@ -525,6 +525,8 @@
   }
   .orbit-layout__center {
     position: relative;
+    top: auto;
+    left: auto;
     transform: none;
     margin-bottom: 1.5rem;
     pointer-events: auto;
