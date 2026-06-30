@@ -250,13 +250,30 @@
 }
 
 /* ── Story images ── */
+.timeline__img-wrap {
+  position: relative;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
 .timeline__img {
   width: 100%;
   aspect-ratio: 4 / 3;
   object-fit: cover;
   border-radius: calc(var(--radius-md) - 4px);
-  margin-bottom: 0.5rem;
+  display: block;
   flex-shrink: 0;
+}
+
+/* Clickable hotspot over the sausage character (bottom-right of our_story_2.jpg) */
+.timeline__character-hotspot {
+  position: absolute;
+  right: 0;
+  top: 18%;
+  width: 25%;
+  height: 80%;
+  border-radius: 0 calc(var(--radius-md) - 4px) calc(var(--radius-md) - 4px) 0;
+  cursor: pointer;
 }
 
 /* ── 3-can reveal layout ── */
